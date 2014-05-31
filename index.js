@@ -17,7 +17,6 @@ module.exports = function (value) {
   }
 
   read.update = function (_value, end) {
-    console.log(_value, end)
     ended = end
     if(cb) {
       var _cb = cb
