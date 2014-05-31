@@ -3,11 +3,13 @@ module.exports = function (value) {
   var ended = null
 
   function read(abort, _cb) {
+    if(abort) return _cb(true)
     if(value) {
       var _value = value
       value = null
-      return _cb(ended, _value)
-    } if(ended) {
+      return _cb(null, _value)
+    }
+    if(ended) {
       _cb(ended)
     } else {
       cb = _cb
@@ -15,13 +17,15 @@ module.exports = function (value) {
   }
 
   read.update = function (_value, end) {
+    console.log(_value, end)
     ended = end
     if(cb) {
       var _cb = cb
       cb = null
       return _cb(ended, _value)
     }
-    value = _value
+    if(!end)
+      value = _value
   }
 
   read.end = function (_end) {
