@@ -1,6 +1,8 @@
+'use strict';
+
 module.exports = function (value) {
 
-  var ended = null
+  var ended = null, cb
 
   function read(abort, _cb) {
     if(abort) return _cb(true)
