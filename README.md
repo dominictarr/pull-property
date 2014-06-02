@@ -10,7 +10,7 @@ otherwise call `read.update(value)`
 call `read.end()` when you are finished.
 
 ``` js
-var p = require('pull-property')
+var p = require('pull-property')()
 
 pull(p, pull.collect(console.log))
 
